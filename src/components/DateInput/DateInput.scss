@@ -1,0 +1,74 @@
+.DateInput {
+  height: 45px;
+  min-width: 225px;
+  background-color: var(--black);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 0.5rem;
+
+  &-label {
+    font-size: var(--fSize20);
+    margin-bottom: 0.5rem;
+    display: block;
+    font-weight: 500;
+    color: var(--white);
+  }
+
+  &-input {
+    color: var(--white);
+    background-color: var(--black);
+    outline: none;
+    border: none;
+    height: 100%;
+    text-transform: uppercase;
+    font-weight: 900;
+    width: 85%;
+
+    &.pinned {
+      color: var(--blue);
+    }
+
+    &::-webkit-calendar-picker-indicator {
+      color: var(--white);
+      width: 30px;
+      height: 30px;
+      filter: invert(1);
+      cursor: pointer;
+
+      &:hover {
+        filter: invert(0.7);
+      }
+    }
+  }
+
+  &-pin {
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transform: color 0.3s ease;
+    padding: 0 0.5rem;
+    transform: rotate(90deg);
+    transition: scale .15s ease;
+
+    &:hover {
+      scale: 1.2;
+    }
+
+    &::before {
+      content: "\270E";
+      color: var(--white);
+      font-size: var(--fSize20);
+
+    }
+
+    &.active {
+      &::before {
+        color: var(--blue);
+      }
+    }
+  }
+}
