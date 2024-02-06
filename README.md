@@ -1,6 +1,6 @@
 # DateInput
 
-## Wrapper over native html date inpit
+## Wrapper over native html date input
 
 ## Features:
 - Convenient minmax
