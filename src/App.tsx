@@ -1,37 +1,42 @@
-import { FC, } from 'react';
+import { FC, FormEvent, } from 'react';
 import { DateInput } from './components/DateInput/DateInput';
 import { useDateInput } from './components/DateInput/useDateInput';
 
 export const App: FC = () => {
-  const { getTime, inputProps, onClean } = useDateInput();
+  const date = useDateInput();
+  const dateTime = useDateInput();
 
-  const onClick = () => {
-    const date = getTime("date");
-    const fullDate = getTime("datetime-local");
-    
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const data = new FormData(e.target as HTMLFormElement);
+    console.log(Object.fromEntries(data));
     console.dir({
-      date,
-      fullDate,
-      stringISO: new Date(date || 0).toISOString(),
-      stringISOFull: new Date(fullDate || 0).toISOString(),
-      stringLocal: new Date(date || 0).toString(),
-      stringFullLocal: new Date(fullDate || 0).toString(),
-    });
-
-    onClean();
+      date: date.getTime("date"),
+      "date-time": date.getTime("datetime-local"),
+    })
+    date.onClean();
+    dateTime.onClean();
   };
 
   return (
-    <main className="App">
-      <DateInput
-        {...inputProps}
-        label="Date: "
-        id="date_input"
-        type="datetime-local"
-        className="App-input"
-      />
+    <main className="App" >
+      <form onSubmit={onSubmit} className="App-form" id="form">
+        <DateInput {...date.inputProps}
+          id="date-input"
+          label="Date: "
+          name="date"
+        />
 
-      <button onClick={onClick} className="App-btn">Get Time</button>
+        <DateInput
+          {...dateTime.inputProps}
+          id="date-time-input"
+          type="datetime-local"
+          label="Date / Time : "
+          name="date_time"
+        />
+      </form>
+
+      <button className="App-btn" form="form" >Submit</button>
     </main>
   );
 };
