@@ -10,7 +10,7 @@ export interface iDateInput extends Omit<ComponentProps<"input">, "value"> {
   id: string;
   setPinned: Dispatch<SetStateAction<boolean>>;
   type?: tDateType;
-  value?: tDateValue;
+  value?: string;
   minmax?: { min?: tDateValue; max?: tDateValue };
   label?: ReactNode;
   className?: string;
@@ -29,7 +29,6 @@ const formatDate = (type: tDateType, value?: tDateValue) => (value ? methods[typ
 
 export const DateInput: FC<iDateInput> = ({ id, label, value, minmax, pinned, setPinned, type = "date", className = "", ...props }) => {
   const formatter = formatDate.bind(null, type);
-  const inputValue = formatter(value);
 
   return (
     <>
@@ -49,7 +48,7 @@ export const DateInput: FC<iDateInput> = ({ id, label, value, minmax, pinned, se
           {...props}
           className={`DateInput-input ${pinned ? "pinned" : ""}`}
           type={type}
-          value={inputValue || ""}
+          value={value}
           min={formatter(minmax?.min)}
           max={formatter(minmax?.max)}
         />

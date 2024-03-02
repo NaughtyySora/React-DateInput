@@ -1,7 +1,8 @@
 .DateInput {
+  max-width: 350px;
+  width: 100%;
   height: 45px;
-  min-width: 225px;
-  background-color: var(--black);
+  background-color: var(--black_1);
   border-radius: 3px;
   display: flex;
   align-items: center;
@@ -13,12 +14,12 @@
     margin-bottom: 0.5rem;
     display: block;
     font-weight: 500;
-    color: var(--white);
+    color: var(--white_1);
   }
 
   &-input {
-    color: var(--white);
-    background-color: var(--black);
+    color: var(--white_1);
+    background-color: var(--black_1);
     outline: none;
     border: none;
     height: 100%;
@@ -27,11 +28,11 @@
     width: 85%;
 
     &.pinned {
-      color: var(--blue);
+      color: var(--blue_2);
     }
 
     &::-webkit-calendar-picker-indicator {
-      color: var(--white);
+      color: var(--white_1);
       width: 30px;
       height: 30px;
       filter: invert(1);
@@ -52,7 +53,7 @@
     transform: color 0.3s ease;
     padding: 0 0.5rem;
     transform: rotate(90deg);
-    transition: scale .15s ease;
+    transition: scale 0.15s ease;
 
     &:hover {
       scale: 1.2;
@@ -60,14 +61,13 @@
 
     &::before {
       content: "\270E";
-      color: var(--white);
+      color: var(--white_1);
       font-size: var(--fSize20);
-
     }
 
     &.active {
       &::before {
-        color: var(--blue);
+        color: var(--blue_2);
       }
     }
   }
